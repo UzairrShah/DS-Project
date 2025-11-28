@@ -1,1 +1,19 @@
-/bin/
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# Bin / build output
+bin/
+target/
+
+# macOS system files
+.DS_Store
+
+# IntelliJ (just in case someone switches)
+.idea/
+*.iml
+
+# Logs
+*.log
+

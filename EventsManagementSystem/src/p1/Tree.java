@@ -1,4 +1,4 @@
-package bst;
+package p1;
 public class Tree<E> {
  private Node<E> root;
  public E search(int k)

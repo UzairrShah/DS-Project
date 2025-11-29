@@ -7,9 +7,8 @@ import java.util.ArrayList;
 public class EventsHashTable implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
     private ChainingHashTable<Event> cht;
-
+    
     public EventsHashTable() {
         cht = new ChainingHashTable<>(367);
     }

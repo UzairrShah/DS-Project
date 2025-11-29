@@ -1,10 +1,13 @@
 package p1;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class EventsHashTable {
+public class EventsHashTable implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
     private ChainingHashTable<Event> cht;
 
     public EventsHashTable() {

@@ -1,8 +1,11 @@
 package p1;
 
+import java.io.Serializable;
 
-public class ChainingHashTable<E> {
+public class ChainingHashTable<E> implements Serializable{
 
+    private static final long serialVersionUID = 1L;
+    
     public SinglyLinkedList<E>[] hashArray;
 
 	public ChainingHashTable(int size) {

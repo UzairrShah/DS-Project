@@ -1,6 +1,11 @@
 package p1;
 
-public class TreeNode<E> {
+import java.io.Serializable;
+
+public class TreeNode<E> implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+    
     int key;
     E data;
     TreeNode<E> leftChild;

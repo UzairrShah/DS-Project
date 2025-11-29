@@ -1,9 +1,11 @@
 package p1;
 
+import java.io.Serializable;
 
+public class SinglyLinkedList<E> implements Serializable{
 
-public class SinglyLinkedList<E> {
-
+    private static final long serialVersionUID = 1L;
+    
     private SinglyNode<E> head = null;
     private SinglyNode<E> tail = null;
     private int size = 0;

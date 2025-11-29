@@ -1,9 +1,12 @@
 package p1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Event {
+public class Event implements Serializable{
 
+    private static final long serialVersionUID = 1L;
+    
     int day;
     int month;
     int year;

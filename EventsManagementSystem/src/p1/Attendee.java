@@ -9,14 +9,17 @@ public class Attendee implements Serializable{
 	private int id;
 	private String name;
 	public Attendee(int id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
-
+	
+	public int getId() {
+		return id;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -25,10 +28,8 @@ public class Attendee implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Attendee [id=" + id + ", name=" + name + "]";
+		return "Attendee ID: " + id + ", Name: " + name ;
 	}
-	public int getId() {
-		return id;
-	}
+	
 	
 }

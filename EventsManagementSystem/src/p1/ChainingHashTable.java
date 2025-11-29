@@ -6,7 +6,7 @@ public class ChainingHashTable<E> {
     public SinglyLinkedList<E>[] hashArray;
 
 	public ChainingHashTable(int size) {
-        hashArray = (SinglyLinkedList[]) new Object[size];
+        hashArray = new SinglyLinkedList[size];
         for (int i = 0; i < size; i++) {
             hashArray[i] = new SinglyLinkedList<>();
         }

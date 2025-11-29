@@ -1,3 +1,9 @@
+// 1. Yacine Merabet 202408983
+// 2. Muhammad Ahmed 202406974
+// 3. Omar Elmokadem 202406688
+// 4. Uzair Daraz 202317922
+
+
 package p1;
 
 import java.io.*;
@@ -7,7 +13,6 @@ import java.util.Scanner;
 public class Test {
 
     private static final String OUTPUT_FILE = "events_data.ser";
-
     public static void main(String[] args) {
 
         EventsHashTable table = null;
@@ -30,6 +35,7 @@ public class Test {
         int choice = 0;
 
         do {
+        	System.out.println("---- EVENT MANGAGMENT ----");
             System.out.println("1- Add a new event");
             System.out.println("2- Register attendee in an event");
             System.out.println("3- Display attendees list in a specific day");
@@ -55,6 +61,7 @@ public class Test {
                     int y = input.nextInt();
 
                     table.addEvent(d, m, y, title);
+                    System.out.println("Event: " + title + " " + d + "/" + m + "/" + y + " Sucessfully Saved!");
                     break;
 
                 case 2:
@@ -110,8 +117,8 @@ public class Test {
                 case 5:
                     System.out.print("enter title to remove: ");
                     String removeTitle = input.nextLine();
-
                     table.removeEvent(removeTitle);
+                    System.out.println(removeTitle + " has been sucessfully removed");
                     break;
 
                 case 6:
@@ -119,6 +126,8 @@ public class Test {
                         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(OUTPUT_FILE));
                         out.writeObject(table);
                         out.close();
+                        System.out.println("File Saved Sucessfully");
+                        System.out.println("GOODBYE");
                     } catch (Exception e) {
                         System.out.println("error saving data: " + e.getMessage());
                     }

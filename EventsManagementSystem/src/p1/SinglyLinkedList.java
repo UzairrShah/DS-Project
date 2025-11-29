@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class SinglyLinkedList<E> implements Serializable{
 
     private static final long serialVersionUID = 1L;
-    
     private SinglyNode<E> head = null;
     private SinglyNode<E> tail = null;
     private int size = 0;
@@ -77,7 +76,7 @@ public class SinglyLinkedList<E> implements Serializable{
 		size--;
 		return answer;
 	}
-	// NEW METHOD
+	// EXTRA METHOD
     public boolean remove(E e) {
         if (isEmpty()) return false;
 
@@ -118,4 +117,3 @@ public class SinglyLinkedList<E> implements Serializable{
 
 
 }
-

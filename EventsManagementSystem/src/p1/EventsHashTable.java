@@ -25,55 +25,44 @@ public class EventsHashTable {
     
     
     
+
 	public void addAttendee(String eventName, int id, String name) {
 	    Attendee attendee = new Attendee(id, name);
 	    boolean found = false;
 	
-	    for (int i = 1; i < 367; i++) { 
-	        SinglyLinkedList<Event> linkedList = cht.getLinkedList(i);
-	        SinglyNode<Event> current = linkedList.getHead();
-	
-	        while (current != null) {
-	            Event event = current.getData();
-	            if (event.getTitle().equals(eventName)) {
-	                event.addAttendee(attendee);
-	                found = true;
-	                break;
-	            }
-	            current = current.getNext();
+	    
+	    for (int i = 1; i < cht.hashArray.length; i++) {
+	        Event event = cht.find(i, eventName);
+	        if (event != null) {
+	            event.addAttendee(attendee);
+	            found = true;
+	            break;
 	        }
-	      if (found)
-	    	  break;
 	    }
+	    
 	    if (!found) 
 	        System.out.println("Error: Event with name '" + eventName + "' not found.");
 	}
+
+
 
 
 
 	public void removeEvent(String eventName) {
 	    boolean found = false;
 	
-	    for (int i = 1; i < 367; i++) { 
-	        SinglyLinkedList<Event> linkedList = cht.getLinkedList(i);
-	        SinglyNode<Event> current = linkedList.getHead();
-	
-	        while (current != null) {
-	            Event event = current.getData();
-	            if (event.getTitle().equals(eventName)) {
-	                linkedList.remove(event); 
-	                found = true;
-	                break;
-	            }
-	            current = current.getNext();
+	    for (int i = 1; i < cht.hashArray.length; i++) {
+	        Event event = cht.find(i, eventName);
+	        if (event != null) {
+	            cht.getLinkedList(i).remove(event);
+	            found = true;
+	            break;
 	        }
-	        if (found) 
-	        	break;
 	    }
 	    if (!found) 
 	        System.out.println("Error: Event with name '" + eventName + "' not found.");
-	    
 	}
+
 
 	
 

@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class SinglyNode<E> implements Serializable{
 
     private static final long serialVersionUID = 1L;
-    
     private E data;
     private SinglyNode<E> next;
 

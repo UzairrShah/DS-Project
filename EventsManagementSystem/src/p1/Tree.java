@@ -1,4 +1,7 @@
 package p1;
+
+import java.util.ArrayList;
+
 public class Tree<E> {
  private Node<E> root;
  public E search(int k)
@@ -179,7 +182,19 @@ public class Tree<E> {
 	 }
 	 
  }
- 
- 
+
+ public ArrayList<E> preOrderList(){
+	ArrayList<E> list = new ArrayList<>();
+	preOrderListHelper(root,list);
+	return list;
+ }
+ private void preOrderListHelper(Node<E> node,ArrayList<E> list){
+	if(node == null)
+		return ;
+	list.add(node.data);
+	preOrderListHelper(node.leftChild,list);
+	preOrderListHelper(node.rightChild,list);
+ }
+
 
 }

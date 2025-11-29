@@ -11,32 +11,14 @@ public class Event implements Serializable {
     private String name;
     private Tree attendees;
   
-    private Node root;
-
-    // ================== Inner Node Class ==================
     
-    // private static class TreeNode {
-    //     Attendee data;
-    //     TreeNode leftChild;
-    //     TreeNode rightChild;
-
-    //     TreeNode(Attendee data) {
-    //         this.data = data;
-    //         this.leftChild = null;
-    //         this.rightChild = null;
-    //     }
-    // }
-
-    // ================== Constructor ==================
     public Event(int day, int month, int year, String name) {
         this.day = day;
         this.month = month;
         this.year = year;
         this.name = name;
-        this.root = null;
     }
 
-    // ================== Getters ==================
     public int getDay() {
         return day;
     }
@@ -53,78 +35,24 @@ public class Event implements Serializable {
         return name;
     }
 
-    // ================== BST: addAttendee ==================
     public void addAttendee(Attendee a) {
         attendees.insert(a.getId(), a);
-       
-
-
-       
-        // TreeNode current = root;
-        // TreeNode parent = null;
-        // int newId = a.getId();
-
-        // while (current != null) {
-        //     parent = current;
-        //     int currentId = current.data.getId();
-
-        //     if (newId < currentId) {
-        //         current = current.leftChild;
-        //     } else if (newId > currentId) {
-        //         current = current.rightChild;
-        //     } else {
-        //         // duplicate id → ignore...
-        //         return;
-        //     }
-        // }
-
-        // // attach to the correct side of parent
-        // int parentId = parent.data.getId();
-        // if (newId < parentId) {
-        //     parent.leftChild = newNode;
-        // } else {
-        //     parent.rightChild = newNode;
-        // }
+  
     }
-
-
-    // ================== BST: search ==================
 
     public boolean search(int k) {
-        TreeNode current = root;
-
-        while (current != null) {
-            int currentId = current.data.getId();
-
-            if (k == currentId) {
-                return true;            // found
-            } else if (k < currentId) {
-                current = current.leftChild;
-            } else {
-                current = current.rightChild;
-            }
-        }
-
-        return false; // reached null → not found
+        if (attendees.search(k)== null)
+            return false;
+        return true;
+        
     }
 
 
-    // ================== BST: attendeesList (pre-order) ==================
-    public ArrayList<Attendee> attendeesList() {
-        ArrayList<Attendee> list = new ArrayList<>();
-        fillPreOrder(root, list);
-        return list;
+    public ArrayList<Attendee> attendeesList () {
+        return attendees.preOrderList();
+        
     }
 
-    private void fillPreOrder(TreeNode node, ArrayList<Attendee> list) {
-        if (node == null) return;
-
-        list.add(node.data);                      
-        fillPreOrder(node.leftChild, list);      
-        fillPreOrder(node.rightChild, list);      
-    }
-
-  
     @Override
     public String toString() {
         return "Event{name='" + name + "', date=" + day + "/" + month + "/" + year + "}";

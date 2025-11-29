@@ -1,60 +1,47 @@
 package p1;
+
 import java.util.ArrayList;
-import java.io.Serializable;
 
-public class Event implements Serializable {
+public class Event {
 
-    // ================== Fields ==================
-    private int day;
-    private int month;
-    private int year;
-    private String name;
-    private Tree attendees;
-  
-    
-    public Event(int day, int month, int year, String name) {
+    int day;
+    int month;
+    int year;
+    String title;
+    Tree<Attendee> attendees; 
+
+    public Event(int day, int month, int year, String title) {
         this.day = day;
         this.month = month;
         this.year = year;
-        this.name = name;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getName() {
-        return name;
+        this.title = title;
+        attendees = new Tree<>();
     }
 
     public void addAttendee(Attendee a) {
         attendees.insert(a.getId(), a);
-  
     }
 
-    public boolean search(int k) {
-        if (attendees.search(k)== null)
-            return false;
-        return true;
-        
+    public boolean search(int id) {
+    	if (attendees.search(id)!= null) {
+    		return true;
+    	}
+        return false;
     }
 
+    // PREORDER 
+    public ArrayList<Attendee> attendeesList() {
+        ArrayList<Attendee> list = new ArrayList<>();
+        attendees.preorderToList(list);
+        return list;
+    }
 
-    public ArrayList<Attendee> attendeesList () {
-        return attendees.preOrderList();
-        
+    public String getTitle() {
+        return title;
     }
 
     @Override
     public String toString() {
-        return "Event{name='" + name + "', date=" + day + "/" + month + "/" + year + "}";
+        return title + " (" + day + "/" + month + "/" + year + ")";
     }
 }

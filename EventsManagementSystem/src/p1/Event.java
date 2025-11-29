@@ -9,23 +9,23 @@ public class Event implements Serializable {
     private int month;
     private int year;
     private String name;
-
+    private Tree attendees;
   
-    private TreeNode root;
+    private Node root;
 
     // ================== Inner Node Class ==================
     
-    private static class TreeNode {
-        Attendee data;
-        TreeNode leftChild;
-        TreeNode rightChild;
+    // private static class TreeNode {
+    //     Attendee data;
+    //     TreeNode leftChild;
+    //     TreeNode rightChild;
 
-        TreeNode(Attendee data) {
-            this.data = data;
-            this.leftChild = null;
-            this.rightChild = null;
-        }
-    }
+    //     TreeNode(Attendee data) {
+    //         this.data = data;
+    //         this.leftChild = null;
+    //         this.rightChild = null;
+    //     }
+    // }
 
     // ================== Constructor ==================
     public Event(int day, int month, int year, String name) {
@@ -55,40 +55,36 @@ public class Event implements Serializable {
 
     // ================== BST: addAttendee ==================
     public void addAttendee(Attendee a) {
-        TreeNode newNode = new TreeNode(a);
+        attendees.insert(a.getId(), a);
+       
+
 
        
-        if (root == null) {
-            root = newNode;
-            return;
-        }
+        // TreeNode current = root;
+        // TreeNode parent = null;
+        // int newId = a.getId();
 
-       
-        TreeNode current = root;
-        TreeNode parent = null;
-        int newId = a.getId();
+        // while (current != null) {
+        //     parent = current;
+        //     int currentId = current.data.getId();
 
-        while (current != null) {
-            parent = current;
-            int currentId = current.data.getId();
+        //     if (newId < currentId) {
+        //         current = current.leftChild;
+        //     } else if (newId > currentId) {
+        //         current = current.rightChild;
+        //     } else {
+        //         // duplicate id → ignore...
+        //         return;
+        //     }
+        // }
 
-            if (newId < currentId) {
-                current = current.leftChild;
-            } else if (newId > currentId) {
-                current = current.rightChild;
-            } else {
-                // duplicate id → ignore...
-                return;
-            }
-        }
-
-        // attach to the correct side of parent
-        int parentId = parent.data.getId();
-        if (newId < parentId) {
-            parent.leftChild = newNode;
-        } else {
-            parent.rightChild = newNode;
-        }
+        // // attach to the correct side of parent
+        // int parentId = parent.data.getId();
+        // if (newId < parentId) {
+        //     parent.leftChild = newNode;
+        // } else {
+        //     parent.rightChild = newNode;
+        // }
     }
 
 

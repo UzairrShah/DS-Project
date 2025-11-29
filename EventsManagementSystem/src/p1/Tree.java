@@ -14,20 +14,24 @@ public class Tree<E> implements Serializable{
         root = null;
     }
 
-    public E search(int k)
-    {
-   	 TreeNode<E> current=root;
-   	 while(current.key!=k)
-   	 {
-   		 if (k<current.key)
-   			 current=current.leftChild;
-   		 else
-   			 current=current.rightChild;
-   		 if(current==null)
-   			 return null;
-   	 }
-   	 return current.data;
-    }
+    
+	public E search(int k) {
+	    TreeNode<E> current = root;
+	
+	    while (current != null && current.key != k) {
+	        if (k < current.key)
+	            current = current.leftChild;
+	        else
+	            current = current.rightChild;
+	    }
+	
+	    if (current == null) {
+	        return null;
+	    } else {
+	        return current.data;
+	    }
+	}
+
 
     
     public void insert(int k, E e) {

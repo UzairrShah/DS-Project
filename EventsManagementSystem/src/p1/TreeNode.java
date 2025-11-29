@@ -22,4 +22,3 @@ public class TreeNode<E> implements Serializable{
         System.out.println(key + ": " + data);
     }
 }
-
